@@ -5,127 +5,78 @@
   <title>Web Pribadi - Nama Anda</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
-      --primary:#00e5ff; --accent:#7c4dff; --text:#eaf6ff;
-    }
+    :root{--bg1:#0f2027;--bg2:#203a43;--bg3:#2c5364;--primary:#00e5ff;--accent:#7c4dff;--text:#eaf6ff}
     *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:'Poppins',sans-serif;
-      color:var(--text);
-      background: linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));
-      background-size: 200% 200%;
-      animation: bgMove 12s ease infinite;
-    }
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}header{ text-align:center; padding:70px 20px 30px }
-.avatar{
-  width:120px;height:120px;border-radius:50%;
-  object-fit:cover;border:3px solid rgba(255,255,255,0.3);
-  box-shadow:0 0 25px rgba(0,229,255,0.6);
-  margin-bottom:15px;
-}
-header h1{font-size:2.6rem;font-weight:700}
-header p{opacity:.8;margin-top:8px}
+    body{font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));background-size:200% 200%;animation:bgMove 12s ease infinite}
+    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}header{text-align:center;padding:60px 20px}
+.avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 0 25px rgba(0,229,255,.6)}
+h1{margin-top:10px}
 
-nav{
-  display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:20px 0 10px
-}
-nav a{
-  color:#fff;text-decoration:none;padding:8px 16px;border-radius:999px;
-  background:rgba(255,255,255,0.08);backdrop-filter:blur(6px);
-  transition:.3s
-}
-nav a:hover{background:var(--primary);color:#001}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:8px 14px;border-radius:20px;background:rgba(255,255,255,.1)}
 
 .container{max-width:1000px;margin:auto;padding:10px}
-section{
-  margin:20px 0;padding:30px;border-radius:20px;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(12px);
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-  opacity:0;transform:translateY(30px);
-  transition:all .8s ease;
-}
-section.show{opacity:1;transform:translateY(0)}
-h2{color:var(--primary);margin-bottom:12px}
+section{margin:20px 0;padding:25px;border-radius:20px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px)}
+h2{color:var(--primary);margin-bottom:10px}
 
-/* Portfolio grid */
-.grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:15px
-}
-.card{
-  border-radius:16px;overflow:hidden;background:rgba(0,0,0,.35);
-  transition:.3s;cursor:pointer
-}
-.card img{width:100%;height:150px;object-fit:cover}
-.card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 10px 25px rgba(0,0,0,.6)}
-.card p{padding:10px;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.card{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
+.card img{width:100%;height:160px;object-fit:cover;transition:.4s}
+.card:hover img{transform:scale(1.1)}
 
-/* Buttons */
-.btn{
-  display:inline-block;margin-top:10px;padding:10px 18px;border-radius:30px;
-  background:linear-gradient(45deg,var(--primary),var(--accent));
-  color:#001;text-decoration:none;font-weight:600
-}
+/* watermark */
+.watermark{position:absolute;bottom:8px;right:10px;font-size:.7rem;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:6px}
 
-/* Floating WA */
-.wa{
-  position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;
-  padding:14px 16px;border-radius:50%;font-size:20px;text-decoration:none;
-  box-shadow:0 8px 20px rgba(0,0,0,.4)
-}
+/* modal */
+#modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;flex-direction:column}
+#modal img{max-width:90%;max-height:80%}
+.nav-btn{color:#fff;font-size:30px;cursor:pointer;padding:10px}
 
-footer{text-align:center;padding:20px;opacity:.7}
-
-@media(max-width:600px){header h1{font-size:2rem}}
+footer{text-align:center;padding:20px;opacity:.6}
 
   </style>
 </head>
 <body><header>
-  <img src="https://via.placeholder.com/150" class="avatar" alt="foto profil">
+  <img src="https://via.placeholder.com/150" class="avatar">
   <h1>Nama Anda</h1>
-  <p>Creator • Freelancer • Personal Website</p>
+  <p>Portfolio Profesional</p>
 </header><nav>
-  <a href="#about">Tentang</a>
   <a href="#portfolio">Portofolio</a>
-  <a href="#contact">Kontak</a>
-</nav><div class="container"><section id="about">
-  <h2>Tentang Saya</h2>
-  <p>Tulis deskripsi singkat tentang diri Anda di sini. Bisa tambahkan keahlian, pekerjaan, atau passion kamu.</p>
-</section><section id="portfolio">
-  <h2>Portofolio</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <p>Project 1</p>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <p>Project 2</p>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <p>Project 3</p>
-    </div>
-  </div>
-</section><section id="contact">
-  <h2>Kontak</h2>
-  <p>Email: emailanda@gmail.com</p>
-  <p>Instagram: @username</p>
-  <a href="#" class="btn">Hubungi Saya</a>
-</section></div><a href="https://wa.me/628xxxxxxxxxx" class="wa">💬</a>
+</nav><div class="container"><section id="portfolio">
+  <h2>Galeri Premium</h2>  <div class="grid" id="gallery"><div class="card"><img src="https://via.placeholder.com/300x200" onclick="openModal(0)"><div class="watermark">@namamu</div></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" onclick="openModal(1)"><div class="watermark">@namamu</div></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" onclick="openModal(2)"><div class="watermark">@namamu</div></div>
 
-<footer>
-  <p>© 2026 Nama Anda</p>
-</footer><script>
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
-    });
-  }, {threshold:0.2});
-  sections.forEach(sec => observer.observe(sec));
+  </div>
+</section></div><!-- modal slider --><div id="modal">
+  <span class="nav-btn" onclick="prev()">⟨</span>
+  <img id="modalImg">
+  <span class="nav-btn" onclick="next()">⟩</span>
+</div><footer>© 2026 Nama Anda</footer><script>
+let images=[
+  "https://via.placeholder.com/300x200",
+  "https://via.placeholder.com/300x200",
+  "https://via.placeholder.com/300x200"
+];
+let index=0;
+
+function openModal(i){
+  index=i;
+  document.getElementById('modal').style.display='flex';
+  document.getElementById('modalImg').src=images[index];
+}
+
+function next(){
+  index=(index+1)%images.length;
+  document.getElementById('modalImg').src=images[index];
+}
+
+function prev(){
+  index=(index-1+images.length)%images.length;
+  document.getElementById('modalImg').src=images[index];
+}
+
+// close modal
+modal.onclick=function(){this.style.display='none'}
 </script></body>
 </html>
