@@ -1,82 +1,189 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Pribadi - Fienn-P Creator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg1:#0f2027;--bg2:#203a43;--bg3:#2c5364;--primary:#00e5ff;--accent:#7c4dff;--text:#eaf6ff}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));background-size:200% 200%;animation:bgMove 12s ease infinite}
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}header{text-align:center;padding:60px 20px}
-.avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 0 25px rgba(0,229,255,.6)}
-h1{margin-top:10px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fienn-P Creator</title>
 
-nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;padding:8px 14px;border-radius:20px;background:rgba(255,255,255,.1)}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg1:#0f2027;
+  --bg2:#203a43;
+  --bg3:#2c5364;
+  --primary:#00e5ff;
+  --text:#eaf6ff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));
+  background-size:200% 200%;
+  animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+header{text-align:center;padding:60px 20px}
+
+.avatar{
+  width:120px;height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 0 25px rgba(0,229,255,.6)
+}
 
 .container{max-width:1000px;margin:auto;padding:10px}
-section{margin:20px 0;padding:25px;border-radius:20px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px)}
+
+section{
+  margin:20px 0;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(10px)
+}
+
 h2{color:var(--primary);margin-bottom:10px}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
-.card{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
-.card img{width:100%;height:160px;object-fit:cover;transition:.4s}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px
+}
+
+.card{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer
+}
+
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  transition:.4s
+}
+
 .card:hover img{transform:scale(1.1)}
 
-/* watermark */
-.watermark{position:absolute;bottom:8px;right:10px;font-size:.7rem;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:6px}
+.watermark{
+  position:absolute;
+  bottom:8px;
+  right:10px;
+  font-size:.7rem;
+  background:rgba(0,0,0,.5);
+  padding:2px 6px;
+  border-radius:6px
+}
 
 /* modal */
-#modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;justify-content:center;align-items:center;flex-direction:column}
-#modal img{max-width:90%;max-height:80%}
-.nav-btn{color:#fff;font-size:30px;cursor:pointer;padding:10px}
+#modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:#000;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+#modal img{
+  max-width:90%;
+  max-height:80%;
+}
+
+.nav-btn{
+  color:#fff;
+  font-size:30px;
+  cursor:pointer;
+  padding:10px;
+}
 
 footer{text-align:center;padding:20px;opacity:.6}
-
-  </style>
+</style>
 </head>
-<body><header>
-  <img src="https://via.placeholder.com/150" class="avatar">
-  <h1>Fienn-P Creator</h1>
-  <p style="opacity:0.8;font-size:0.95rem;">Elegance in Every Frame</p>
-  <p>Creative Designer • Photography • Visual Storyteller</p>
-</header><nav>
-  <a href="#portfolio">Portofolio</a>
-</nav><div class="container"><section id="portfolio">
-  <h2>Galeri Premium</h2>  <div class="grid" id="gallery"><div class="card"><img src="https://via.placeholder.com/300x200" onclick="openModal(0)"><div class="watermark">@fiennp.creator</div></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" onclick="openModal(1)"><div class="watermark">@fiennp.creator</div></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" onclick="openModal(2)"><div class="watermark">@fiennp.creator</div></div>
 
-  </div>
-</section></div><!-- modal slider --><div id="modal">
+<body>
+
+<header>
+  <img src="images/foto1.jpg" class="avatar">
+  <h1>Fienn-P Creator</h1>
+  <p>Elegance in Every Frame</p>
+</header>
+
+<div class="container">
+<section>
+<h2>Galeri Premium</h2>
+
+<div class="grid" id="gallery"></div>
+
+</section>
+</div>
+
+<!-- MODAL -->
+<div id="modal">
   <span class="nav-btn" onclick="prev()">⟨</span>
   <img id="modalImg">
   <span class="nav-btn" onclick="next()">⟩</span>
-</div><footer>© 2026 Fienn-P Creator</footer><script>
- <img
-  <div class="card">
-  <img src="Picsart_26-03-10-06-35-59-152.jpg" onclick="openModal(0)">
 </div>
-let index=0;
 
+<footer>© 2026 Fienn-P Creator</footer>
+
+<script>
+// AUTO LIST GAMBAR (ISI NAMA FILE DI SINI SAJA)
+let images = [
+  "foto1.jpg",
+  "foto2.jpg",
+  "foto3.jpg"
+];
+
+let index = 0;
+let gallery = document.getElementById("gallery");
+
+// AUTO GENERATE GALERI
+images.forEach((img, i)=>{
+  let card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <img src="images/${img}" onclick="openModal(${i})">
+    <div class="watermark">@fiennp.creator</div>
+  `;
+
+  gallery.appendChild(card);
+});
+
+// MODAL
 function openModal(i){
-  index=i;
-  document.getElementById('modal').style.display='flex';
-  document.getElementById('modalImg').src=images[index];
+  index = i;
+  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modalImg').src = "images/" + images[index];
 }
 
 function next(){
-  index=(index+1)%images.length;
-  document.getElementById('modalImg').src=images[index];
+  index = (index + 1) % images.length;
+  document.getElementById('modalImg').src = "images/" + images[index];
 }
 
 function prev(){
-  index=(index-1+images.length)%images.length;
-  document.getElementById('modalImg').src=images[index];
+  index = (index - 1 + images.length) % images.length;
+  document.getElementById('modalImg').src = "images/" + images[index];
 }
 
-// close modal
-modal.onclick=function(){this.style.display='none'}
-</script></body>
+document.getElementById('modal').onclick = function(){
+  this.style.display = 'none';
+}
+</script>
+
+</body>
 </html>
