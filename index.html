@@ -5,93 +5,86 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fienn-P Creator</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg1:#0f2027;
-  --bg2:#203a43;
-  --bg3:#2c5364;
-  --primary:#00e5ff;
-  --text:#eaf6ff;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  font-family:'Poppins',sans-serif;
-  color:var(--text);
-  background:linear-gradient(120deg,var(--bg1),var(--bg2),var(--bg3));
-  background-size:200% 200%;
-  animation:bgMove 12s ease infinite;
+  margin:0;
+  font-family:Poppins;
+  background:#0f2027;
+  color:#fff;
 }
 
-@keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px;
 }
+h1{letter-spacing:2px}
 
-header{text-align:center;padding:60px 20px}
-
-.avatar{
-  width:120px;height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  box-shadow:0 0 25px rgba(0,229,255,.6)
+/* FILTER */
+.filter{
+  text-align:center;
+  margin-bottom:20px;
 }
-
-.container{max-width:1000px;margin:auto;padding:10px}
-
-section{
-  margin:20px 0;
-  padding:25px;
+.filter button{
+  margin:5px;
+  padding:8px 15px;
+  border:none;
   border-radius:20px;
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(10px)
+  background:#ffffff20;
+  color:white;
+  cursor:pointer;
+}
+.filter button.active{
+  background:#00e5ff;
+  color:black;
 }
 
-h2{color:var(--primary);margin-bottom:10px}
-
-.grid{
+/* GRID */
+.gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  padding:20px;
 }
 
 .card{
-  position:relative;
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer
+  opacity:0;
+  transform:scale(0.9);
+  transition:.5s;
+}
+.card.show{
+  opacity:1;
+  transform:scale(1);
 }
 
 .card img{
   width:100%;
-  height:160px;
+  height:200px;
   object-fit:cover;
-  transition:.4s
+  border-radius:15px;
+  cursor:pointer;
 }
 
-.card:hover img{transform:scale(1.1)}
-
+/* WATERMARK */
 .watermark{
   position:absolute;
   bottom:8px;
   right:10px;
-  font-size:.7rem;
-  background:rgba(0,0,0,.5);
-  padding:2px 6px;
-  border-radius:6px
+  font-size:10px;
+  background:#0008;
+  padding:3px 6px;
+  border-radius:5px;
 }
 
-/* modal */
+/* MODAL */
 #modal{
   display:none;
   position:fixed;
   top:0;left:0;
   width:100%;height:100%;
-  background:#000;
+  background:black;
   justify-content:center;
   align-items:center;
   flex-direction:column;
@@ -102,86 +95,107 @@ h2{color:var(--primary);margin-bottom:10px}
   max-height:80%;
 }
 
-.nav-btn{
-  color:#fff;
+.nav{
   font-size:30px;
+  color:white;
   cursor:pointer;
   padding:10px;
 }
-
-footer{text-align:center;padding:20px;opacity:.6}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="images/foto1.jpg" class="avatar">
   <h1>Fienn-P Creator</h1>
-  <p>Elegance in Every Frame</p>
+  <p>Professional Visual Portfolio</p>
 </header>
 
-<div class="container">
-<section>
-<h2>Galeri Premium</h2>
-
-<div class="grid" id="gallery"></div>
-
-</section>
+<!-- FILTER -->
+<div class="filter">
+  <button onclick="filterSelection('all')" class="active">All</button>
+  <button onclick="filterSelection('photo')">Photo</button>
+  <button onclick="filterSelection('design')">Design</button>
+  <button onclick="filterSelection('album')">Album</button>
 </div>
+
+<!-- GALERI -->
+<div class="gallery" id="gallery"></div>
 
 <!-- MODAL -->
 <div id="modal">
-  <span class="nav-btn" onclick="prev()">⟨</span>
+  <span class="nav" onclick="prev()">⟨</span>
   <img id="modalImg">
-  <span class="nav-btn" onclick="next()">⟩</span>
+  <span class="nav" onclick="next()">⟩</span>
 </div>
 
-<footer>© 2026 Fienn-P Creator</footer>
-
 <script>
-// AUTO LIST GAMBAR (ISI NAMA FILE DI SINI SAJA)
-let images = [
-  "foto1.jpg",
-  "foto2.jpg",
-  "foto3.jpg"
-];
-
+let data = [];
+let filtered = [];
 let index = 0;
-let gallery = document.getElementById("gallery");
 
-// AUTO GENERATE GALERI
-images.forEach((img, i)=>{
-  let card = document.createElement("div");
-  card.className = "card";
-
-  card.innerHTML = `
-    <img src="images/${img}" onclick="openModal(${i})">
-    <div class="watermark">@fiennp.creator</div>
-  `;
-
-  gallery.appendChild(card);
+// LOAD JSON
+fetch('images.json')
+.then(res => res.json())
+.then(res => {
+  data = res;
+  filtered = data;
+  renderGallery();
 });
+
+// RENDER
+function renderGallery(){
+  let gallery = document.getElementById('gallery');
+  gallery.innerHTML = "";
+
+  filtered.forEach((item,i)=>{
+    let div = document.createElement('div');
+    div.className = "card show";
+
+    div.innerHTML = `
+      <div style="position:relative">
+        <img loading="lazy" src="images/${item.file}" onclick="openModal(${i})">
+        <div class="watermark">@fiennp.creator</div>
+      </div>
+    `;
+
+    gallery.appendChild(div);
+  });
+}
+
+// FILTER
+function filterSelection(cat){
+  document.querySelectorAll('.filter button').forEach(btn=>btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if(cat === 'all'){
+    filtered = data;
+  }else{
+    filtered = data.filter(i => i.category === cat);
+  }
+
+  renderGallery();
+}
 
 // MODAL
 function openModal(i){
   index = i;
-  document.getElementById('modal').style.display = 'flex';
-  document.getElementById('modalImg').src = "images/" + images[index];
+  document.getElementById('modal').style.display='flex';
+  document.getElementById('modalImg').src='images/'+filtered[index].file;
 }
 
 function next(){
-  index = (index + 1) % images.length;
-  document.getElementById('modalImg').src = "images/" + images[index];
+  index = (index+1)%filtered.length;
+  document.getElementById('modalImg').src='images/'+filtered[index].file;
 }
 
 function prev(){
-  index = (index - 1 + images.length) % images.length;
-  document.getElementById('modalImg').src = "images/" + images[index];
+  index = (index-1+filtered.length)%filtered.length;
+  document.getElementById('modalImg').src='images/'+filtered[index].file;
 }
 
-document.getElementById('modal').onclick = function(){
-  this.style.display = 'none';
+document.getElementById('modal').onclick=function(){
+  this.style.display='none';
 }
 </script>
 
