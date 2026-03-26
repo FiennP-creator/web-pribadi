@@ -109,12 +109,16 @@ fetch('data.json')
 
 <div class="container" id="listArtikel"></div>
 
-<!-- PINDAHKAN SCRIPT KE SINI -->
 <script>
 fetch('data.json')
   .then(res => res.json())
   .then(data => {
     let container = document.getElementById('listArtikel');
+
+    if (!container) {
+      console.log("Container tidak ditemukan!");
+      return;
+    }
 
     data.forEach(item => {
       let card = `
@@ -130,17 +134,8 @@ fetch('data.json')
       `;
       container.innerHTML += card;
     });
-  });
+  })
+  .catch(err => console.log("Error JSON:", err));
 </script>
 
   </body>
-<body>
-<header>
-  <h1>Daftar Artikel</h1>
-</header>
-
-<div class="nav">
-  <a href="index.html">Home</a>
-</div>
-
-<div class="container" id="listArtikel"></div>
