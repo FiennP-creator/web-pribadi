@@ -8,108 +8,112 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f7fa;
+      background: #0f172a;
       margin: 0;
-      padding: 0;
+      color: white;
     }
 
     header {
-      background: #0f172a;
-      color: white;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
+    }
+
+    .nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .nav a {
+      margin: 10px;
+      color: #00e5ff;
+      text-decoration: none;
+      font-size: 18px;
     }
 
     .container {
-      max-width: 900px;
-      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
       padding: 20px;
     }
 
     .card {
-      background: white;
-      padding: 25px;
+      background: #1e293b;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: 0.3s;
     }
 
-    h1 {
-      margin-bottom: 10px;
+    .card:hover {
+      transform: scale(1.03);
     }
 
-    .meta {
-      color: gray;
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+    }
+
+    .card p {
       font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-
-    h2 {
-      margin-top: 25px;
-      color: #0f172a;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      color: gray;
-      font-size: 14px;
+      color: #cbd5e1;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Blog Saya</h1>
-  <p>Berbagi informasi dan wawasan</p>
+  <h1>Daftar Artikel</h1>
 </header>
 
-<div class="container">
-  <div class="card">
-
-    <h1>Perkembangan Teknologi AI di Masa Depan</h1>
-    <div class="meta">Ditulis oleh Admin • 2026</div>
-
-    <p>
-      Teknologi kecerdasan buatan atau Artificial Intelligence (AI) terus berkembang pesat dan menjadi bagian penting dalam kehidupan manusia. Dari otomatisasi sederhana hingga analisis kompleks, AI kini hadir di berbagai bidang.
-    </p>
-
-    <h2>AI Akan Semakin Cerdas</h2>
-    <p>
-      Di masa depan, AI akan mampu belajar sendiri dari data dan pengalaman. Teknologi ini memungkinkan sistem untuk mengambil keputusan dengan cepat dan akurat.
-    </p>
-
-    <h2>Kehidupan Sehari-hari</h2>
-    <p>
-      AI akan hadir dalam berbagai aspek seperti asisten virtual, mobil tanpa pengemudi, dan rumah pintar yang membuat hidup lebih mudah.
-    </p>
-
-    <h2>Dunia Kerja</h2>
-    <p>
-      Beberapa pekerjaan akan tergantikan, namun AI juga membuka peluang baru di bidang teknologi dan digital.
-    </p>
-
-    <h2>Tantangan</h2>
-    <p>
-      Keamanan data, etika, dan penyalahgunaan teknologi menjadi tantangan yang harus dihadapi bersama.
-    </p>
-
-    <h2>Kesimpulan</h2>
-    <p>
-      AI adalah masa depan. Dengan penggunaan yang bijak, teknologi ini dapat membawa kemajuan besar bagi manusia.
-    </p>
-
-  </div>
+<div class="nav">
+  <a href="index.html">Home</a>
 </div>
 
-<footer>
-  © 2026 Web Pribadi Kamu
-</footer>
+<div class="container">
+
+  <!-- ARTIKEL 1 -->
+  <div class="card">
+    <a href="artikel-ai.html">
+      <img src="https://source.unsplash.com/400x300/?ai" />
+      <div class="card-content">
+        <h3>Perkembangan AI di Masa Depan</h3>
+        <p>Bagaimana AI akan mengubah kehidupan manusia di masa depan.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- ARTIKEL 2 -->
+  <div class="card">
+    <a href="#">
+      <img src="https://source.unsplash.com/400x300/?technology" />
+      <div class="card-content">
+        <h3>Teknologi Modern 2026</h3>
+        <p>Inovasi terbaru di dunia teknologi yang wajib kamu tahu.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- ARTIKEL 3 -->
+  <div class="card">
+    <a href="#">
+      <img src="https://source.unsplash.com/400x300/?coding" />
+      <div class="card-content">
+        <h3>Belajar Coding dari Nol</h3>
+        <p>Panduan dasar untuk kamu yang ingin jadi programmer.</p>
+      </div>
+    </a>
+  </div>
+
+</div>
 
 </body>
 </html>
