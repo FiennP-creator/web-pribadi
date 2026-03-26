@@ -1,1 +1,10 @@
-
+[
+  {
+    "judul": "Foto 1",
+    "gambar": "images/foto1.jpg"
+  },
+  {
+    "judul": "Foto 2",
+    "gambar": "images/foto2.jpg"
+  }
+]
