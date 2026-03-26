@@ -1,1 +1,23 @@
-
+[
+  {
+    "id": "ai",
+    "judul": "Perkembangan AI di Masa Depan",
+    "deskripsi": "Bagaimana AI akan mengubah kehidupan manusia.",
+    "gambar": "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    "isi": "Teknologi AI berkembang sangat pesat dan akan digunakan di berbagai bidang seperti kesehatan, pendidikan, dan industri."
+  },
+  {
+    "id": "teknologi",
+    "judul": "Teknologi Modern 2026",
+    "deskripsi": "Inovasi terbaru di dunia digital.",
+    "gambar": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "isi": "Perkembangan teknologi semakin cepat dengan hadirnya AI, IoT, dan blockchain."
+  },
+  {
+    "id": "digital",
+    "judul": "Era Digital",
+    "deskripsi": "Perubahan gaya hidup di era internet.",
+    "gambar": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "isi": "Era digital membuat semua aktivitas menjadi lebih mudah dan cepat melalui internet."
+  }
+]
