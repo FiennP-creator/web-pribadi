@@ -89,28 +89,28 @@
 
 <script>
 fetch('data.json')
-  .then(res => res.json())
-  .then(data => {
-    let container = document.getElementById('listArtikel');
+.then(res => res.json())
+.then(data => {
+  let container = document.getElementById('listArtikel');
 
-    if (!container) return;
+  if (!container) return;
 
-    data.forEach(item => {
-      let card = `
-        <div class="card">
-          <a href="${item.link}">
-            <img src="${item.img}">
-            <div class="card-content">
-              <h3>${item.title}</h3>
-              <p>${item.desc}</p>
-            </div>
-          </a>
-        </div>
-      `;
-      container.innerHTML += card;
-    });
-  })
-  .catch(err => console.log(err));
+  data.forEach(item => {
+    let card = `
+      <div class="card">
+        <a href="${item.link}">
+          <img src="${item.img}">
+          <div class="card-content">
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+          </div>
+        </a>
+      </div>
+    `;
+    container.innerHTML += card;
+  });
+})
+.catch(err => console.log("Error JSON:", err));
 </script>
 
 </body>
