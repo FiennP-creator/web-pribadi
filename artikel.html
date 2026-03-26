@@ -75,16 +75,35 @@
     }
   </style>
 </head>
-<body>
+  <script>
+fetch('data.json')
+  .then(res => res.json())
+  .then(data => {
+    let container = document.getElementById('listArtikel');
 
+    data.forEach(item => {
+      let card = `
+        <div class="card">
+          <a href="${item.link}">
+            <img src="${item.img}">
+            <div class="card-content">
+              <h3>${item.title}</h3>
+              <p>${item.desc}</p>
+            </div>
+          </a>
+        </div>
+      `;
+      container.innerHTML += card;
+    });
+  });
+  </script>
+<body>
 <header>
   <h1>Daftar Artikel</h1>
-</header>header>
+</header>
 
 <div class="nav">
   <a href="index.html">Home</a>
 </div>
 
-<<div class="container" id="listArtikel">
-  
-</div>
+<div class="container" id="listArtikel"></div>
