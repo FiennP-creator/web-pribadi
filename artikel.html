@@ -72,29 +72,10 @@
     .card p {
       font-size: 14px;
       color: #cbd5e1;
-    }
-  </style>
-  .then(res => res.json())
-  .then(data => {
-    let container = document.getElementById('listArtikel');
+</style>
+</head>
 
-    data.forEach(item => {
-      let card = `
-        <div class="card">
-          <a href="${item.link}">
-            <img src="${item.img}">
-            <div class="card-content">
-              <h3>${item.title}</h3>
-              <p>${item.desc}</p>
-            </div>
-          </a>
-        </div>
-      `;
-      container.innerHTML += card;
-    });
-  });
-  </script>
-  <body>
+<body>
 
 <header>
   <h1>Daftar Artikel</h1>
@@ -112,10 +93,7 @@ fetch('data.json')
   .then(data => {
     let container = document.getElementById('listArtikel');
 
-    if (!container) {
-      console.log("Container tidak ditemukan!");
-      return;
-    }
+    if (!container) return;
 
     data.forEach(item => {
       let card = `
@@ -132,7 +110,7 @@ fetch('data.json')
       container.innerHTML += card;
     });
   })
-  .catch(err => console.log("Error JSON:", err));
+  .catch(err => console.log(err));
 </script>
 
-  </body>
+</body>
