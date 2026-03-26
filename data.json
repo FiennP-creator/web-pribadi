@@ -1,10 +1,14 @@
 [
   {
-    "judul": "Foto 1",
-    "gambar": "images/foto1.jpg"
+    "title": "Perkembangan AI di Masa Depan",
+    "desc": "Bagaimana AI akan mengubah kehidupan manusia di masa depan.",
+    "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    "link": "artikel-ai.html"
   },
   {
-    "judul": "Foto 2",
-    "gambar": "images/foto2.jpg"
+    "title": "Teknologi Modern",
+    "desc": "Perkembangan teknologi terbaru di dunia digital.",
+    "img": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "link": "artikel-tekno.html"
   }
 ]
